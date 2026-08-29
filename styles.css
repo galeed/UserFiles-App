@@ -1,14 +1,14 @@
 :root {
-  /* Fondo un poco más claro y con matiz azulado cyber */
+  /* Fondo más claro estilo azul noche / carbón cyber */
   --bg-color: #121622; 
-  --card-bg: rgba(22, 28, 45, 0.82);
+  --card-bg: rgba(22, 28, 45, 0.85);
   
-  /* Neones hiper-brillantes */
+  /* Paleta Neón Hiper-Brillante */
   --neon-cyan: #00F0FF;
-  --neon-green: #00FF66; /* Verde neón para el código Matrix */
+  --neon-green: #00FF66;
   --neon-magenta: #FF0055;
   
-  /* Textos más brillantes con resplandor */
+  /* Textos muy claros y legibles */
   --text-main: #FFFFFF;
   --text-muted: #94A3B8;
   --border-glow: rgba(0, 240, 255, 0.4);
@@ -17,80 +17,33 @@
   --font-body: 'Rajdhani', sans-serif;
 }
 
-/* =============================================
-   AJUSTES DE TEXTO CON RESPLANDOR NEÓN
-   ============================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  /* Resplandor sutil a todo el texto para que sobresalga */
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
 }
 
-/* Títulos y etiquetas principales */
-.card-title {
-  color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
-}
-
-.desc-text {
-  color: #CBD5E1; /* Texto secundario más claro */
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-}
-
-.alias-value {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4);
-}
-
-/* =============================================
-   CARGA CYBERPUNK CON VERDE NEÓN
-   ============================================= */
-
-.intro-overlay {
-  background-color: #0B0E17; /* Ajustado acorde al fondo general */
-}
-
-/* Fondo de Código Matrix en Verde Neón */
-.matrix-code-bg {
-  color: rgba(0, 255, 102, 0.35); /* Verde Neón brillante y legible */
-  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6);
-  font-weight: bold;
-}
-
-.status-text {
-  color: #E2E8F0;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.scanning {
-  color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green);
-  animation: pulse-green 1.5s infinite;
-}
-
-@keyframes pulse-green {
-  0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--neon-green); }
-  50% { opacity: 0.4; text-shadow: 0 0 2px var(--neon-green); }
-}
-
-/* Barra de progreso en verde neón */
-.progress-bar-neon {
-  background-color: var(--neon-green);
-  box-shadow: 0 0 12px var(--neon-green), 0 0 20px var(--neon-green);
-}
-
-
-/* Fondo dinámico neón Opera GX */
+/* Fondo resplandeciente central Opera GX */
 .background-glow {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(255, 0, 85, 0.08) 40%, rgba(0,0,0,0) 70%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(255, 0, 85, 0.10) 45%, rgba(0,0,0,0) 70%);
   z-index: -1;
   pointer-events: none;
 }
@@ -99,6 +52,7 @@ body {
   width: 90%;
   max-width: 900px;
   padding: 2rem;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* Header */
@@ -115,11 +69,13 @@ body {
   font-family: var(--font-heading);
   font-size: 1.8rem;
   letter-spacing: 2px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .neon-text {
   color: var(--neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.9), 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
 /* Tarjeta Alias */
@@ -132,19 +88,21 @@ body {
   align-items: center;
   gap: 0.8rem;
   backdrop-filter: blur(12px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 .alias-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: #CBD5E1;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .alias-value {
   font-family: var(--font-heading);
   color: var(--neon-cyan);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
 }
 
 .icon-btn {
@@ -162,7 +120,7 @@ body {
   transform: rotate(45deg);
 }
 
-/* Grid Layout */
+/* Layout Principal */
 .main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -175,34 +133,35 @@ body {
   }
 }
 
-/* Cards Glassmorphism */
+/* Tarjetas Glassmorphism */
 .card {
   background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
   border-radius: 12px;
   padding: 2rem;
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: border-color 0.3s ease;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: 1.5px;
   margin-bottom: 1.5rem;
-  color: var(--text-main);
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
-/* Drop Zone */
+/* Zona de Carga (Drop Zone) */
 .drop-zone {
-  border: 2px dashed rgba(0, 240, 255, 0.3);
+  border: 2px dashed rgba(0, 240, 255, 0.4);
   text-align: center;
 }
 
 .drop-zone.dragover {
   border-color: var(--neon-cyan);
-  background: rgba(0, 240, 255, 0.05);
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 .drop-content {
@@ -212,9 +171,15 @@ body {
   gap: 1rem;
 }
 
+.drop-text {
+  color: #E2E8F0;
+  font-size: 1.05rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
 .or-divider {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 /* Botones Neón */
@@ -228,33 +193,39 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  text-shadow: 0 0 5px var(--neon-cyan);
 }
 
 .btn-neon:hover {
   background: var(--neon-cyan);
-  color: #000;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+  color: #000000;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.9);
+  text-shadow: none;
+  font-weight: bold;
 }
 
 .btn-magenta {
   color: var(--neon-magenta);
   border-color: var(--neon-magenta);
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+  text-shadow: 0 0 5px var(--neon-magenta);
 }
 
 .btn-magenta:hover {
   background: var(--neon-magenta);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(255, 0, 85, 0.8);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.9);
+  text-shadow: none;
 }
 
-/* Sección Recibir */
+/* Recepción */
 .desc-text {
-  color: var(--text-muted);
-  font-size: 0.95rem;
+  color: #CBD5E1;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  line-height: 1.4;
+  line-height: 1.5;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
 }
 
 .code-input-group {
@@ -264,26 +235,27 @@ body {
 }
 
 #share-code {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid rgba(255, 0, 85, 0.4);
   border-radius: 6px;
   padding: 0.8rem;
   color: var(--neon-magenta);
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-shadow: 0 0 8px var(--neon-magenta);
 }
 
 #share-code:focus {
   border-color: var(--neon-magenta);
-  box-shadow: 0 0 12px rgba(255, 0, 85, 0.3);
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
 }
 
 /* =============================================
-   ESTILOS PANTALLA DE CARGA (CYBERPUNK INTRO)
+   PANTALLA DE CARGA (INTRO VERDE NEÓN)
    ============================================= */
 
 .intro-overlay {
@@ -292,8 +264,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #050609; /* Un poco más oscuro que el fondo normal */
-  z-index: 9999; /* Por encima de todo */
+  background-color: #0B0E17;
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,7 +273,7 @@ body {
   overflow: hidden;
 }
 
-/* Efecto de código Matrix/Digital al fondo */
+/* Texto del Código Matrix Verde Neón */
 .matrix-code-bg {
   position: absolute;
   top: 0;
@@ -309,12 +281,13 @@ body {
   width: 100%;
   height: 100%;
   font-family: monospace;
-  font-size: 10px;
-  color: rgba(0, 240, 255, 0.15); /* Neón Cyan muy tenue */
-  line-height: 1;
+  font-size: 11px;
+  color: rgba(0, 255, 102, 0.35);
+  text-shadow: 0 0 6px rgba(0, 255, 102, 0.7);
+  line-height: 1.1;
   word-break: break-all;
   pointer-events: none;
-  opacity: 0.8;
+  font-weight: bold;
 }
 
 .loader-content {
@@ -325,22 +298,22 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  width: 300px;
+  width: 320px;
 }
 
-/* Título Glitch */
+/* Glitch Título */
 .glitch-wrapper {
   margin-bottom: 1rem;
 }
 
 .glitch {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: #FFFFFF;
   letter-spacing: 3px;
   position: relative;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .glitch::before,
@@ -357,14 +330,14 @@ body {
   left: 2px;
   text-shadow: -2px 0 var(--neon-magenta);
   clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim 5s infinite linear alternate-reverse;
+  animation: glitch-anim 4s infinite linear alternate-reverse;
 }
 
 .glitch::after {
   left: -2px;
   text-shadow: -2px 0 var(--neon-cyan);
   clip: rect(85px, 450px, 140px, 0);
-  animation: glitch-anim 3s infinite linear alternate-reverse;
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
@@ -376,55 +349,50 @@ body {
   100% { clip: rect(60px, 9999px, 80px, 0); }
 }
 
-/* Barra de progreso */
+/* Barra de progreso Verde Neón */
 .progress-container {
   width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
   overflow: hidden;
-  border: 1px solid rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 255, 102, 0.3);
 }
 
 .progress-bar-neon {
-  width: 0%; /* Empieza en 0 */
+  width: 0%;
   height: 100%;
-  background-color: var(--neon-cyan);
-  box-shadow: 0 0 10px var(--neon-cyan), 0 0 5px #fff;
-  border-radius: 2px;
-  transition: width 0.1s linear; /* Para actualización suave por JS */
+  background-color: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green), 0 0 20px var(--neon-green);
+  border-radius: 3px;
+  transition: width 0.1s linear;
 }
 
-/* Texto Estado */
 .status-text {
   font-family: monospace;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: #E2E8F0;
   letter-spacing: 1px;
 }
 
 .scanning {
-  color: var(--neon-cyan);
-  animation: pulse-cyan 1.5s infinite;
+  color: var(--neon-green);
+  text-shadow: 0 0 8px var(--neon-green);
+  animation: pulse-green 1.5s infinite;
 }
 
-@keyframes pulse-cyan {
-  0%, 100% { opacity: 1; text-shadow: 0 0 5px var(--neon-cyan); }
-  50% { opacity: 0.5; text-shadow: 0 0 2px var(--neon-cyan); }
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--neon-green); }
+  50% { opacity: 0.4; text-shadow: 0 0 2px var(--neon-green); }
 }
 
-/* Clase para ocultar la app principal y el loader al terminar */
+/* Estados de visibilidad para transición */
 .hidden-content {
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
 }
 
-.app-container {
-  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
-}
-
-/* Clase que aplicará JS al terminar */
 .intro-overlay.fade-out {
   opacity: 0;
   visibility: hidden;
