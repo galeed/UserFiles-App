@@ -226,3 +226,157 @@ body {
   border-color: var(--neon-magenta);
   box-shadow: 0 0 12px rgba(255, 0, 85, 0.3);
 }
+
+/* =============================================
+   ESTILOS PANTALLA DE CARGA (CYBERPUNK INTRO)
+   ============================================= */
+
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #050609; /* Un poco más oscuro que el fondo normal */
+  z-index: 9999; /* Por encima de todo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease, visibility 0.8s;
+  overflow: hidden;
+}
+
+/* Efecto de código Matrix/Digital al fondo */
+.matrix-code-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(0, 240, 255, 0.15); /* Neón Cyan muy tenue */
+  line-height: 1;
+  word-break: break-all;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.loader-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 300px;
+}
+
+/* Título Glitch */
+.glitch-wrapper {
+  margin-bottom: 1rem;
+}
+
+.glitch {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 3px;
+  position: relative;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon-magenta);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--neon-cyan);
+  clip: rect(85px, 450px, 140px, 0);
+  animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(31px, 9999px, 94px, 0); }
+  20% { clip: rect(62px, 9999px, 42px, 0); }
+  40% { clip: rect(16px, 9999px, 78px, 0); }
+  60% { clip: rect(11px, 9999px, 13px, 0); }
+  80% { clip: rect(85px, 9999px, 40px, 0); }
+  100% { clip: rect(60px, 9999px, 80px, 0); }
+}
+
+/* Barra de progreso */
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.progress-bar-neon {
+  width: 0%; /* Empieza en 0 */
+  height: 100%;
+  background-color: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan), 0 0 5px #fff;
+  border-radius: 2px;
+  transition: width 0.1s linear; /* Para actualización suave por JS */
+}
+
+/* Texto Estado */
+.status-text {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.scanning {
+  color: var(--neon-cyan);
+  animation: pulse-cyan 1.5s infinite;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; text-shadow: 0 0 5px var(--neon-cyan); }
+  50% { opacity: 0.5; text-shadow: 0 0 2px var(--neon-cyan); }
+}
+
+/* Clase para ocultar la app principal y el loader al terminar */
+.hidden-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.app-container {
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+}
+
+/* Clase que aplicará JS al terminar */
+.intro-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.main-app-loaded {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
