@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UserFiles App - Transferencia Anónima</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <div class="app-container">
+    <header class="header">
+      <h1 class="logo">USERFILES <span class="neon-text">APP</span></h1>
+      
+      <div class="alias-card">
+        <span class="alias-label">TU ALIAS:</span>
+        <span id="current-alias" class="alias-value">Loading...</span>
+        <button id="btn-refresh-alias" class="icon-btn" title="Cambiar Alias">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3L21.5 8M22 12.5a10 10 0 0 1-18.8 4.2L2.5 16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      
+      <section class="card drop-zone" id="drop-zone">
+        <h2 class="card-title">ENVIAR ARCHIVO</h2>
+        <div class="drop-content">
+          <div class="upload-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <p class="drop-text">Arrastra y suelta tus archivos aquí</p>
+          <span class="or-divider">o</span>
+          <label for="file-input" class="btn-neon">SELECCIONAR ARCHIVO</label>
+          <input type="file" id="file-input" hidden>
+        </div>
+      </section>
+
+      <section class="card receive-zone">
+        <h2 class="card-title">RECIBIR ARCHIVO</h2>
+        <p class="desc-text">Introduce el código de 6 dígitos enviado por tu contacto para iniciar la descarga.</p>
+        
+        <div class="code-input-group">
+          <input type="text" id="share-code" maxlength="6" placeholder="000000" autocomplete="off">
+          <button id="btn-receive" class="btn-neon btn-magenta">DESCARGAR</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
