@@ -10,7 +10,7 @@ function initCyberpunkLoader() {
   
   // 1. Generar Código Rápido de Fondo (Matrix effect)
   // Genera caracteres aleatorios muy rápido
-  const chars = '0123456789ABCDEF@#$%&<>[]{}+=-_';
+  const chars = '0123456789ABCDEF01<>[]{}/*#+=~$_X';
   let matrixText = '';
   
   // Llenamos el fondo con mucho texto inicial
