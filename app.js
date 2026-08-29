@@ -10,20 +10,23 @@ function initCyberpunkLoader() {
   
   if (!loader || !mainApp || !matrixBg || !progressBar) return;
 
-  // Set de caracteres Hacker/Matrix
   const chars = '0123456789ABCDEF01<>[]{}/*#+=~$_X';
-  let matrixText = '';
   
-  // Rellenar fondo con texto inicial
-  for (let i = 0; i < 3500; i++) {
+  // Calcular caracteres necesarios según el tamaño de la pantalla
+  // Multiplicamos el área para asegurar que rellene absolutamente todo el fondo
+  const totalCharsNeeded = Math.ceil((window.innerWidth * window.innerHeight) / 35);
+  
+  let matrixText = '';
+  for (let i = 0; i < totalCharsNeeded; i++) {
     matrixText += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   matrixBg.textContent = matrixText;
 
-  // Cambiar caracteres de forma rápida (efecto ruido digital)
+  // Cambiar caracteres de forma rápida en todo el fondo
   const matrixInterval = setInterval(() => {
     let currentText = matrixBg.textContent;
-    for (let i = 0; i < 80; i++) {
+    // Cambiamos más caracteres por ciclo para cubrir toda la pantalla en vivo
+    for (let i = 0; i < 200; i++) {
       const index = Math.floor(Math.random() * currentText.length);
       const char = chars.charAt(Math.floor(Math.random() * chars.length));
       currentText = currentText.substring(0, index) + char + currentText.substring(index + 1);
