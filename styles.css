@@ -273,22 +273,24 @@ body {
   overflow: hidden;
 }
 
-/* Texto del Código Matrix Verde Neón */
+
 .matrix-code-bg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   font-family: monospace;
   font-size: 11px;
-  color: rgba(0, 255, 102, 0.35);
+  color: rgba(0, 255, 102, 0.4);
   text-shadow: 0 0 6px rgba(0, 255, 102, 0.7);
   line-height: 1.1;
   word-break: break-all;
   pointer-events: none;
   font-weight: bold;
+  overflow: hidden;
 }
+
 
 .loader-content {
   position: relative;
