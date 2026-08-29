@@ -1,31 +1,86 @@
 :root {
-  --bg-color: #080A0F;
-  --card-bg: rgba(15, 18, 28, 0.75);
+  /* Fondo un poco más claro y con matiz azulado cyber */
+  --bg-color: #121622; 
+  --card-bg: rgba(22, 28, 45, 0.82);
+  
+  /* Neones hiper-brillantes */
   --neon-cyan: #00F0FF;
+  --neon-green: #00FF66; /* Verde neón para el código Matrix */
   --neon-magenta: #FF0055;
-  --text-main: #E2E8F0;
-  --text-muted: #64748B;
-  --border-glow: rgba(0, 240, 255, 0.25);
+  
+  /* Textos más brillantes con resplandor */
+  --text-main: #FFFFFF;
+  --text-muted: #94A3B8;
+  --border-glow: rgba(0, 240, 255, 0.4);
+  
   --font-heading: 'Orbitron', sans-serif;
   --font-body: 'Rajdhani', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* =============================================
+   AJUSTES DE TEXTO CON RESPLANDOR NEÓN
+   ============================================= */
 
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: var(--font-body);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
+  /* Resplandor sutil a todo el texto para que sobresalga */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
 }
+
+/* Títulos y etiquetas principales */
+.card-title {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.desc-text {
+  color: #CBD5E1; /* Texto secundario más claro */
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.alias-value {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* =============================================
+   CARGA CYBERPUNK CON VERDE NEÓN
+   ============================================= */
+
+.intro-overlay {
+  background-color: #0B0E17; /* Ajustado acorde al fondo general */
+}
+
+/* Fondo de Código Matrix en Verde Neón */
+.matrix-code-bg {
+  color: rgba(0, 255, 102, 0.35); /* Verde Neón brillante y legible */
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6);
+  font-weight: bold;
+}
+
+.status-text {
+  color: #E2E8F0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.scanning {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--neon-green); }
+  50% { opacity: 0.4; text-shadow: 0 0 2px var(--neon-green); }
+}
+
+/* Barra de progreso en verde neón */
+.progress-bar-neon {
+  background-color: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green), 0 0 20px var(--neon-green);
+}
+
 
 /* Fondo dinámico neón Opera GX */
 .background-glow {
