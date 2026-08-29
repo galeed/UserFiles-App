@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UserFiles App - Transferencia Anónima</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Fuentes Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- PANTALLA DE CARGA CYBERPUNK -->
   <div id="intro-loader" class="intro-overlay">
     <div class="matrix-code-bg" id="matrix-code"></div>
     
@@ -27,19 +30,16 @@
       </div>
     </div>
   </div>
+
   <div class="background-glow"></div>
 
+  <!-- APLICACIÓN PRINCIPAL -->
   <div class="app-container hidden-content" id="main-app">
-    </div>
-
-  <script src="app.js"></script>
-  
-  <div class="background-glow"></div>
-
-  <div class="app-container">
+    <!-- Header -->
     <header class="header">
       <h1 class="logo">USERFILES <span class="neon-text">APP</span></h1>
       
+      <!-- Contenedor del Alias Anónimo -->
       <div class="alias-card">
         <span class="alias-label">TU ALIAS:</span>
         <span id="current-alias" class="alias-value">Loading...</span>
@@ -49,8 +49,10 @@
       </div>
     </header>
 
+    <!-- Main Grid -->
     <main class="main-grid">
       
+      <!-- Panel de Envío -->
       <section class="card drop-zone" id="drop-zone">
         <h2 class="card-title">ENVIAR ARCHIVO</h2>
         <div class="drop-content">
@@ -64,6 +66,7 @@
         </div>
       </section>
 
+      <!-- Panel de Recepción -->
       <section class="card receive-zone">
         <h2 class="card-title">RECIBIR ARCHIVO</h2>
         <p class="desc-text">Introduce el código de 6 dígitos enviado por tu contacto para iniciar la descarga.</p>
