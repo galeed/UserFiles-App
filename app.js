@@ -1,3 +1,80 @@
+// ==========================================
+// 1. CONFIGURACIÓN DE SUPABASE
+// ==========================================
+const SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';
+const SUPABASE_KEY = 'TU-ANON-PUBLIC-KEY';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// Generador de código aleatorio de 6 dígitos
+function generateTransferCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// ==========================================
+// 2. FUNCIONES DE TRANSFERENCIA (SUPABASE)
+// ==========================================
+
+// Función para Subir y Generar Código (Emisor)
+async function sendFile(file, senderAlias) {
+  const code = generateTransferCode();
+  const filePath = `transfers/${code}_${file.name}`;
+
+  // 1. Subir archivo a Supabase Storage
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from('files')
+    .upload(filePath, file);
+
+  if (uploadError) {
+    console.error('Error al subir archivo:', uploadError);
+    alert('Error al subir el archivo. Revisa el bucket de almacenamiento.');
+    return null;
+  }
+
+  // Obtenemos la URL pública
+  const { data: publicUrlData } = supabase.storage
+    .from('files')
+    .getPublicUrl(filePath);
+
+  // 2. Registrar en la base de datos
+  const { data, error } = await supabase
+    .from('transfers')
+    .insert([
+      {
+        code: code,
+        file_name: file.name,
+        file_size: file.size,
+        file_url: publicUrlData.publicUrl,
+        sender_alias: senderAlias,
+        status: 'waiting'
+      }
+    ])
+    .select();
+
+  if (error) {
+    console.error('Error al registrar transferencia:', error);
+    return null;
+  }
+
+  return code; // Devuelve el código de 6 dígitos
+}
+
+// Función para Consultar por Código (Receptor)
+async function receiveFileByCode(code) {
+  const { data, error } = await supabase
+    .from('transfers')
+    .select('*')
+    .eq('code', code.trim())
+    .single();
+
+  if (error || !data) {
+    console.error('Código no encontrado:', error);
+    alert('Código inválido o expirado.');
+    return null;
+  }
+
+  return data; // Devuelve objeto con file_name, file_url, etc.
+}
+
 // =============================================
 // LÓGICA PANTALLA DE CARGA CYBERPUNK (MATRIX)
 // =============================================
